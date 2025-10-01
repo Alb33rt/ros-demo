@@ -56,6 +56,9 @@ RUN pip3 install --upgrade pip
 USER ros
 WORKDIR /home/ros
 
+# Copy rosbag data into the container
+COPY --chown=ros:ros rosbag/ /home/ros/rosbag/
+
 # Source the ROS 2 setup file
 RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> /home/ros/.bashrc
 
